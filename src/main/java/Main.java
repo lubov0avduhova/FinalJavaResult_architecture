@@ -1,29 +1,38 @@
 public class Main {
     public static void main(String[] args) {
+        Pets PetsList = new Pets();
+        Pack_animal PackList = new Pack_animal();
+        for (Cats cat : PetsList.getListCats()) {
+            System.out.print(cat.getPersonal_name() + " " + cat.getAnimalClass());
+        }
 
-        HomePets homePets = new HomePets();
-        Dog dog = new Dog("Собака","средний", new String[]{"команда 1", "команда 2", "команда 3"});
-        homePets.getListDogs().add(dog);
+        for (Cats cat : PetsList.getListCats()) {
+            System.out.print(cat.getPersonal_name() + " " + cat.getAnimal_name() + " ");
+        }
+        System.out.println();
 
+        for (Horses cat : PackList.getListHorses()) {
+            System.out.print(cat.getPersonal_name() + " " + cat.getAnimal_name() + " ");
+        }
 
-        Cat cat1 = new Cat("Кот1",true, new String[]{"команда 1", "команда 2", "команда 3"});
-        Cat cat2 = new Cat("Кот2", false,new String[]{"команда 1", "команда 2", "команда 3"});
-        homePets.getListCats().add(cat1);
-        homePets.getListCats().add(cat2);
+        System.out.println();
 
+        String standartPetsComands[] = { "sit", "voice", "come" };
 
-        for(Animal ani: homePets.getListDogs())
-            System.out.println(ani.getName() + " " + ani.getCommands());
-        System.out.println("____________");
+        Cats testCat1 = new Cats("666", "01.01.2020", "Кошка", standartPetsComands, "Satan");
+        Cats testCat2 = new Cats("02", "02.11.2022", "Кошка", standartPetsComands, "Tom");
+        Cats testCat3 = new Cats("03", "12.03.2021", "Кошка", standartPetsComands, "Artem");
+        Dogs testDog1 = new Dogs("04", "06.01.2019", "Собака", standartPetsComands, "Rex");
+        Dogs testDog2 = new Dogs("05", "01.01.2017", "Собака", standartPetsComands, "Lucky");
 
-        for(Animal ani: homePets.getListCats())
-            System.out.println(ani.getName() + " " + ani.getCommands());
-        System.out.println("____________");
+        PetsList.getListCats().add(testCat1);
+        PetsList.getListCats().add(testCat2);
+        PetsList.getListCats().add(testCat3);
 
-        homePets.getListCats().remove(cat1);
+        PetsList.getListDogs().add(testDog1);
+        PetsList.getListDogs().add(testDog2);
 
-        for(Animal ani: homePets.getListCats())
-            System.out.println(ani.getName() + " " + ani.getCommands());
-        System.out.println("____________");
+        App getApp = new App();
+        getApp.start(PetsList, PackList);
     }
 }
